@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="endOfSemModelStoreContainer" CdmEntityContainer="endOfSemEntities">
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="endOfSemModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Forfeited" ColumnName="Forfeited" />
+          <ScalarProperty Name="TMemberId" ColumnName="TMemberId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TMembers">
+      <EntityTypeMapping TypeName="endOfSemModel.TMember">
+        <MappingFragment StoreEntitySet="TMember">
+          <ScalarProperty Name="TMemberId" ColumnName="TMemberId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Authorised" ColumnName="Authorised" />
+          <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

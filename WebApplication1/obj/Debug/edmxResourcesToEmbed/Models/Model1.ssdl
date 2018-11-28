@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="endOfSemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameId" />
+    </Key>
+    <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Venue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Forfeited" Type="int" />
+    <Property Name="TMemberId" Type="int" />
+    <Property Name="Amount" Type="money" />
+  </EntityType>
+  <EntityType Name="TMember">
+    <Key>
+      <PropertyRef Name="TMemberId" />
+    </Key>
+    <Property Name="TMemberId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Authorised" Type="int" />
+    <Property Name="Rejected" Type="int" />
+  </EntityType>
+  <Association Name="FK_Game_TMember">
+    <End Role="TMember" Type="Self.TMember" Multiplicity="0..1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMember">
+        <PropertyRef Name="TMemberId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="TMemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="endOfSemModelStoreContainer">
+    <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TMember" EntityType="Self.TMember" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Game_TMember" Association="Self.FK_Game_TMember">
+      <End Role="TMember" EntitySet="TMember" />
+      <End Role="Game" EntitySet="Game" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

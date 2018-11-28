@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Basketball App</h1>
+    <p class="lead">This application is for the end of semester challenge</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            Use the button on the right to view a list of upcoming games or a list of team members.
+        </p>    
+    </div>
+    <div class="col-md-4">
+        @Html.ActionLink("List of Games", "Index", "Games")
+    </div>
+    <div class="col-md-4">
+        @Html.ActionLink("List of Team Members", "Index", "TMembers")
+    </div>
+</div>

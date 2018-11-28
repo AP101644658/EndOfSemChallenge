@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.TMember
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TMember</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorised)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorised)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rejected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rejected)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TMemberId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

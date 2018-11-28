@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication1.Models.Game>
+
+@{
+    ViewBag.Title = "PreviousGames";
+}
+
+<h2>PreviousGames</h2>
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Venue)
+        </th>
+        <td>
+            @Html.DisplayNameFor(model => model.Forfeited)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.TMember.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th></th>
+    </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forfeited)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TMember.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.GameId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.GameId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.GameId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<ul>@Html.ActionLink("Current Games", "Index", "Games")</ul>

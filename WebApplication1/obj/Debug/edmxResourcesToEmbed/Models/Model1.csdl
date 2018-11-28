@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="endOfSemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="GameId" />
+    </Key>
+    <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Venue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Forfeited" Type="Int32" />
+    <Property Name="TMemberId" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="TMember" Relationship="Self.FK_Game_TMember" FromRole="Game" ToRole="TMember" />
+  </EntityType>
+  <EntityType Name="TMember">
+    <Key>
+      <PropertyRef Name="TMemberId" />
+    </Key>
+    <Property Name="TMemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Authorised" Type="Int32" />
+    <Property Name="Rejected" Type="Int32" />
+    <NavigationProperty Name="Games" Relationship="Self.FK_Game_TMember" FromRole="TMember" ToRole="Game" />
+  </EntityType>
+  <Association Name="FK_Game_TMember">
+    <End Role="TMember" Type="Self.TMember" Multiplicity="0..1" />
+    <End Role="Game" Type="Self.Game" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMember">
+        <PropertyRef Name="TMemberId" />
+      </Principal>
+      <Dependent Role="Game">
+        <PropertyRef Name="TMemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="endOfSemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Games" EntityType="Self.Game" />
+    <EntitySet Name="TMembers" EntityType="Self.TMember" />
+    <AssociationSet Name="FK_Game_TMember" Association="Self.FK_Game_TMember">
+      <End Role="TMember" EntitySet="TMembers" />
+      <End Role="Game" EntitySet="Games" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
