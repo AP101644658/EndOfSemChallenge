@@ -1,0 +1,5 @@
+C:\Users\STUDENT\source\repos\endOfSem\bin\Debug\endOfSem.dacpac
+C:\Users\STUDENT\source\repos\endOfSem\bin\Debug\endOfSem.dll
+C:\Users\STUDENT\source\repos\endOfSem\bin\Debug\endOfSem.pdb
+C:\Users\STUDENT\source\repos\endOfSem\obj\Debug\endOfSem.dll
+C:\Users\STUDENT\source\repos\endOfSem\obj\Debug\endOfSem.pdb
